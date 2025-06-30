@@ -1,0 +1,35 @@
+div.singleDoctor{
+    margin:10px;
+    border-radius:5px;
+    display:flex;
+    gap:10px;
+}
+div.doctorImage{
+    flex:1;
+    border-radius:5px;
+}
+div.doctorImage img{
+    width:100%;
+    border-radius:5px;
+    background-color:rgb(237, 49, 81);
+}
+div.doctorDetails{
+    display:grid;
+    justify-items: center;
+    grid-row-gap:15px;
+    flex:3;
+}
+div.doctorDetails1{
+    align-content: center;
+    border-radius:15px;
+    border:2px solid black;
+    display:grid;
+}
+div.doctorDetails1 div p{
+    margin:0px;
+    padding:0px;
+}
+div.doctorDetails1 div,div.doctorDetails1 p,div.doctorDetails1 h1,div.doctorDetails1 button{
+    margin:0px;
+    padding:5px 10px 5px 10px;
+}

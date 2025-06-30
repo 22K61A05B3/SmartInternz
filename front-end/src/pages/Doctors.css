@@ -1,0 +1,50 @@
+div.specialityData{
+    display:grid;
+    margin:10px;
+    justify-content: center;
+    border-radius:5px;
+    padding:10px;
+}
+div.speciality{
+    display:flex;
+    justify-content: center;
+    gap:10px;
+}
+div.speciality img{
+    width:50px;
+}
+div.special{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+div.doctors{
+    justify-content: center;
+    gap:10px;
+    padding:10px;
+    display:flex;
+    flex-wrap: wrap;
+}
+div.doctor{
+    border-radius:5px;
+    display:grid;
+    border:2px solid black;
+    justify-items: start;
+}
+div.doctor img{
+    width:230px;
+    border-radius:5px;
+    display:flex;
+    background-color: bisque;
+    justify-self: center;
+}
+div.doctor h1{
+    font-size:15px;
+}
+div.doctor h1,div.doctor p,div.doctor div{
+    padding:0px;
+    margin:5px;
+}
+div.special:hover,div.doctor:hover{
+    transform: scale(1.03);
+}

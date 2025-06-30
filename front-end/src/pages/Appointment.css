@@ -1,0 +1,22 @@
+div.appointment{
+    display:grid;
+    margin:auto;
+    width:fit-content;
+    padding:0px 10px 0px 10px;
+    border:2px solid black;
+}
+div.appointmentHeading{
+    display:flex;
+    gap:15px;
+    align-items: center;
+}
+form.slotForm{
+    display:grid;
+    grid-row-gap:25px;
+    padding-bottom:15px;
+}
+form.slotForm div{
+    display:flex;
+    justify-content: center;
+    gap:15px;
+}

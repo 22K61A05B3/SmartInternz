@@ -1,0 +1,45 @@
+div.navbar{
+    display:flex;
+    border:2px solid black;
+    border-radius: 5px;
+    margin:10px;
+    padding:10px;
+    align-items: center;
+    justify-content: space-between;
+}
+div.nvChild1,div.nvChild2f{
+    display:flex;
+    gap:5px;
+}
+div.nvChild1 p{
+    font-weight: bolder;
+}
+div.nvChild2f a{
+    text-decoration: none;
+    font-weight: bolder;
+}
+div.nvChild2t{ 
+    position:relative;
+    display:flex;
+    flex-direction: column;
+}
+div.nvChild2t div.profile{
+    display:flex;
+    position: relative;
+    align-items: center;
+}
+div.nvChild2t div.dropDown{
+    display:grid;
+    position:absolute;
+    width:100%;
+    border-radius:5px;
+    top:65px;
+    background-color: bisque;
+}
+div.dropDown p{
+    margin:5px;
+    padding:5px;
+}
+div.dropDown p:hover{
+    background-color: beige;
+}

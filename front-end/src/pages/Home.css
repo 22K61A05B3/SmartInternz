@@ -1,0 +1,27 @@
+div.homePage{
+    border:2px solid black;
+    margin:10px;
+    display:flex;
+    justify-content: center;
+    height:calc(100vh - 110px);
+    align-items: center;
+    border-radius:5px;
+}
+div.homePageImage, div.homePageContent {
+    flex: 1;
+    padding:5px;
+}
+div.homePage div.homePageImage img{
+    width:100%;
+    box-shadow: 1px 1px 4px red;
+}
+div.homePageContent{
+    display: grid;
+    position: relative;
+    grid-row-gap: 10px;
+    text-align: center;
+    justify-items: center;
+}
+div.homePageContent h1{
+    margin:0px;
+}
