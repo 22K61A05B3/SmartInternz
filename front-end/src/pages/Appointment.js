@@ -6,7 +6,7 @@ import { doctors } from "../assets/assets_frontend/assets";
 function Appointment() {
     const { _id } = useParams();
     const navigate = useNavigate();
-    const [doctorUse, updateDoctorUse] = useState(null); // Start as null
+    const [doctorUse, updateDoctorUse] = useState(null);
     const [dateTime, setDateTime] = useState("");
 
     useEffect(() => {
@@ -14,14 +14,58 @@ function Appointment() {
         updateDoctorUse(matchedDoctor || null);
     }, [_id]);
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        alert("Booking Completed.");
-        navigate("/");
-        console.log("Appointment with:", doctorUse.name);
-        console.log("Scheduled on:", dateTime);
-    }
 
+        console.log("handleSubmit called.");
+
+        const token = localStorage.getItem("token");
+        console.log("Token retrieved from localStorage:", token);
+
+        if (!token) {
+            console.log("Token is null or undefined. Showing alert and returning.");
+            alert("You must be logged in to book an appointment.");
+            return;
+        }
+
+        try {
+            console.log("Attempting to send API request with token:", token.substring(0, 30) + '...'); // Log partial token
+            console.log("Request Body:", {
+                doctorId: doctorUse?._id, // Use optional chaining to be safe
+                doctorName: doctorUse?.name,
+                speciality: doctorUse?.speciality,
+                appointmentDate: dateTime,
+            });
+
+            const response = await fetch("http://localhost:5000/api/appointments", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    doctorId: doctorUse._id,
+                    doctorName: doctorUse.name,
+                    speciality: doctorUse.speciality,
+                    appointmentDate: dateTime,
+                }),
+            });
+
+            const data = await response.json();
+            console.log("API Response Status:", response.status);
+            console.log("API Response Data:", data);
+
+            if (response.ok) {
+                alert("Appointment booked successfully.");
+                navigate("/");
+            } else {
+                alert("Error: " + data.message);
+            }
+        } catch (err) {
+            alert("Something went wrong.");
+            console.error("Network error:", err);
+        }
+    }
     if (!doctorUse) {
         return (
             <div className="appointment">
@@ -42,7 +86,7 @@ function Appointment() {
             </div>
 
             <div>
-                <h3 style={{margin:"0px"}} className="appointmentDoctor">Doctor Details :</h3>
+                <h3 style={{ margin: "0px" }} className="appointmentDoctor">Doctor Details :</h3>
                 <h4>Name: {doctorUse.name}</h4>
                 <h4>Specialization: {doctorUse.speciality}</h4>
                 <h2 className="dateAndTime">Appointment Date and Time:</h2>

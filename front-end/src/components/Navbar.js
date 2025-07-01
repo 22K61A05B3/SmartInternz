@@ -14,7 +14,7 @@ function DropDown()
         navigate("/");
     }
     return (<>
-        <p>My Profile</p>
+        <p onClick={()=>{navigate("/myprofile")}}>My Profile</p>
         <p onClick={handleLogout} style={{ cursor: "pointer", color: "red" }}>Logout</p>
     </>)
 }

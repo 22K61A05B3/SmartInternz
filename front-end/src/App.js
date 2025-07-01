@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Doctors from "./pages/Doctors";
 import Doctor from "./pages/Doctor";
 import Appointment from "./pages/Appointment";
+import MyProfile from "./pages/MyProfile";
 import {Routes,Route} from "react-router-dom";
 function App()
 {
@@ -19,6 +20,7 @@ function App()
     <Route path="/doctors/:speciality" element={<Doctors></Doctors>}></Route>
     <Route path="/doctor/:_id" element={<Doctor></Doctor>}></Route>
     <Route path="/:_id/appointment" element={<Appointment></Appointment>}></Route>
+    <Route path="/myprofile" element={<MyProfile></MyProfile>}></Route>
   </Routes>
   </>);
 }

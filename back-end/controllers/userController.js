@@ -46,4 +46,21 @@ const loginUser = async (req, res) => {
       res.status(500).json({ error: err.message });
     }
   };
-module.exports = { registerUser ,loginUser};
+  const updateProfile = async (req, res) => {
+    try {
+      const userId = req.user._id;
+      const updates = req.body;
+  
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        updates,
+        { new: false }
+      ).select("-password");
+  
+      res.json({ message: "Profile updated", user: updatedUser });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  };
+  
+module.exports = { registerUser ,loginUser,updateProfile};

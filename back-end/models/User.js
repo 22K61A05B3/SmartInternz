@@ -13,7 +13,24 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  }
-});
+  },
+  phone:{
+    type:String,
+    default:" ", 
+  },
+  address: {
+    type: String,
+    default: "",
+  },
+  gender: {
+    type: String,
+    enum: ["Male", "Female", "Other"],
+    default: "Other",
+  },
+  birthday: {
+    type: Date,
+    default: null,
+  },
+}, { timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);
