@@ -1,0 +1,11 @@
+div.myprofile{
+    width:max-content;
+    border:1px solid black;
+    margin:auto;
+    padding:10px 15px 10px 15px;
+}
+input.specialInput{
+    border:none;
+    outline:none;
+    border-bottom:2px solid black;
+}
