@@ -41,6 +41,7 @@ const myappointments = async (req, res) => {
 };
 const cancelAppointment = async (req, res) => {
   const appointmentId = req.params.id;
+  console.log(appointmentId);
   try {
     const appointment = await Appointment.findById(appointmentId);
 
@@ -56,4 +57,20 @@ const cancelAppointment = async (req, res) => {
     res.status(500).json({ message: "Server error while cancelling appointment" });
   }
 };
-module.exports = { bookAppointment,myappointments,cancelAppointment};
+const doctorsAppointments = async (req, res) => {
+  const doctorId = req.params.id;
+  try {
+    const appointments = await Appointment.find({ doctorId });
+
+    if (!appointments || appointments.length === 0) {
+      return res.status(404).json({ message: "No appointments found for this doctor" });
+    }
+
+    res.status(200).json(appointments);
+  } catch (error) {
+    console.error("Error fetching doctor's appointments:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+module.exports = { bookAppointment,myappointments,cancelAppointment,doctorsAppointments};

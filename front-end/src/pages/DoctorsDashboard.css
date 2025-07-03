@@ -1,0 +1,24 @@
+div.doctorsDashboard{
+    display:flex;
+    flex-wrap:wrap;
+    margin:10px;
+    justify-content: center;
+    gap:10px;
+}
+div.doctorInDb{
+    flex-grow:0;
+    display:grid;
+    border:2px solid black;
+    border-radius:10px;
+    grid-row-gap:10px;
+}
+div.doctorInDb img{
+    width:250px;
+    border-radius:10px;
+    background-color: bisque;
+}
+div.doctorInDb h1,div.doctorInDb p,div.doctorInDb div{
+    padding:0px;
+    margin:0px 0px 5px 5px;
+    font-size:18px;
+}

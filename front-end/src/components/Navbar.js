@@ -21,9 +21,11 @@ function DropDown()
 }
 function Logged(props)
 {
+    let navigate=useNavigate();
     let [dropDownClick,updateClick]=useState(false);
     return (<div className="nvChild2t">
         <div className="profile">
+            <button onClick={()=>{navigate("/doctorsDashboard")}}>Doctor's Dahboard</button>
             <img src={profile} width="50px" alt="profile"></img>
             <img src={dropDown} width="50x" height="30px" alt="dropDown" onClick={()=>{updateClick((prev)=>{return !prev})}}></img>
         </div>
