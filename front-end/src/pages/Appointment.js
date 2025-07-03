@@ -31,7 +31,7 @@ function Appointment() {
         try {
             console.log("Attempting to send API request with token:", token.substring(0, 30) + '...'); // Log partial token
             console.log("Request Body:", {
-                doctorId: doctorUse?._id, // Use optional chaining to be safe
+                doctorId: doctorUse?._id, 
                 doctorName: doctorUse?.name,
                 speciality: doctorUse?.speciality,
                 appointmentDate: dateTime,
