@@ -2,13 +2,13 @@ import React, { useState ,useEffect} from "react";
 import "./Doctors.css"
 import {specialityData} from "../assets/assets_frontend/assets";
 import {doctors} from "../assets/assets_frontend/assets";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 function Doctors()
 {
     let navigate=useNavigate();
     let params=useParams();
     console.log(params);
-    let [speciality,updateSpeciality]=useState(specialityData);
+    let speciality=specialityData;
     let [doctorsList,updateDoctors]=useState([]);
     useEffect(() => {
         if (params.speciality) {
@@ -47,6 +47,7 @@ function Doctors()
             })
         }
         </div>
+        <button onClick={()=>{navigate("/doctorsDashboard")}} style={{backgroundColor:"blue",padding:"8px",borderRadius:"8px",color:"white"}}>Doctor's Dahboard</button>
     </div>);
 }
 export default Doctors;
