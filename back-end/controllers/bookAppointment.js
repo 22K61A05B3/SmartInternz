@@ -23,5 +23,37 @@ const bookAppointment = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const myappointments = async (req, res) => {
+  try {
+    const userId = req.user.id; 
 
-module.exports = { bookAppointment };
+    const appointments = await Appointment.find({ userId });
+
+    if (!appointments.length) {
+      return res.status(404).json({ message: "No appointments found." });
+    }
+
+    res.status(200).json(appointments);
+  } catch (error) {
+    console.error("Error fetching appointments:", error);
+    res.status(500).json({ message: "Server error while fetching appointments." });
+  }
+};
+const cancelAppointment = async (req, res) => {
+  const appointmentId = req.params.id;
+  try {
+    const appointment = await Appointment.findById(appointmentId);
+
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+
+    appointment.status = "cancelled";
+    await appointment.save();
+    res.status(200).json({ message: "Appointment cancelled successfully" });
+  } catch (error) {
+    console.error("Cancel error:", error);
+    res.status(500).json({ message: "Server error while cancelling appointment" });
+  }
+};
+module.exports = { bookAppointment,myappointments,cancelAppointment};

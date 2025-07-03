@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./MyProfile.css";
 import profile from "../images/profile.jpg";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,39 @@ function MyProfile()
     let [address,updateAddress]=useState(" ");
     let [birthday,updateBirthday]=useState("2004-12-16");
     let [gender,updateGender]=useState("Female");
+    useEffect(() => {
+        const fetchProfile = async () => {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                alert("Please log in first");
+                navigate("/login");
+                return;
+            }
+
+            try {
+                const res = await fetch("http://localhost:5000/api/auth/profile", {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    updatePhone(data.phone || "");
+                    updateAddress(data.address || "");
+                    updateBirthday(data.birthday || "2000-01-01");
+                    updateGender(data.gender || "Female");
+                } else {
+                    console.error("Failed to fetch profile:", res.status);
+                }
+            } catch (err) {
+                console.error("Error fetching profile:", err);
+            }
+        };
+
+        fetchProfile();
+    }, [navigate]);
     async function handleSave(e)
     {
         e.preventDefault();

@@ -7,6 +7,7 @@ import Doctors from "./pages/Doctors";
 import Doctor from "./pages/Doctor";
 import Appointment from "./pages/Appointment";
 import MyProfile from "./pages/MyProfile";
+import MyAppointments from "./pages/MyAppointments";
 import {Routes,Route} from "react-router-dom";
 function App()
 {
@@ -21,6 +22,7 @@ function App()
     <Route path="/doctor/:_id" element={<Doctor></Doctor>}></Route>
     <Route path="/:_id/appointment" element={<Appointment></Appointment>}></Route>
     <Route path="/myprofile" element={<MyProfile></MyProfile>}></Route>
+    <Route path="/myappointments" element={<MyAppointments></MyAppointments>}></Route>
   </Routes>
   </>);
 }

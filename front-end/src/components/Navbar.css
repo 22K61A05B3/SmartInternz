@@ -37,7 +37,7 @@ div.nvChild2t div.dropDown{
     background-color: bisque;
 }
 div.dropDown p{
-    margin:5px;
+    margin:0px;
     padding:5px;
 }
 div.dropDown p:hover{

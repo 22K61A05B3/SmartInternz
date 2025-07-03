@@ -15,6 +15,7 @@ function DropDown()
     }
     return (<>
         <p onClick={()=>{navigate("/myprofile")}}>My Profile</p>
+        <p onClick={()=>{navigate("/myappointments")}}>My Appointments</p>
         <p onClick={handleLogout} style={{ cursor: "pointer", color: "red" }}>Logout</p>
     </>)
 }
